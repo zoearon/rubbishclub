@@ -7,7 +7,7 @@ APIKEY = os.environ['TOM_TOM_KEY']
 
 
 def calculate_route(lst_of_coordinates):
-    """ Calculates route given a list of coordinates """
+    """ Given list of coordinates, returns optimized list of middle points """
 
     coordinates_str = ':'.join(lst_of_coordinates)
 
