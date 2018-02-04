@@ -32,11 +32,20 @@ def register():
     return render_template("register.html")
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET'])
 def login():
     """ login for residents and collectors """
 
     return render_template("login.html")
+
+
+@app.route('/login', methods=['POST'])
+def check_user():
+    """ log the user in """
+
+    # get the user name from the post form
+    email = request.form.get("email")
+    password = request.form.get("password")
 
 
 @app.route('/profile')
