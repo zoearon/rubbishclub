@@ -32,6 +32,22 @@ def register():
     return render_template("register.html")
 
 
+@app.route('/register-success', methods=['POST'])
+def register_process():
+    """Process registration."""
+    # Get form variables
+
+    fname = request.form["fname"]
+    lname = request.form["lname"]
+    address = request.form["address"]
+    can_size = request.form["can_size"]
+    needs_pickup = request.form["needs_pickup"]
+
+    #UPDATE DB
+
+    return redirect("/")
+ 
+
 @app.route('/login', methods=['GET'])
 def login():
     """ login for residents and collectors """

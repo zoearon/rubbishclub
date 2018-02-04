@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<head>
+    <h1>Resident Profile</h1>
+
+</head>
+    <body>
+
+
+<form action="/register-success" method="POST">
+
+    <div>
+        <label>
+            First Name
+            <input type="text" name="fname">
+        </label>
+    </div>
+
+    <div>
+        <label>
+            Last Name
+            <input type="text" name="lname">
+        </label>
+    </div>
+
+    <div>
+        <label>
+            Address
+            <input type="text" name="address">
+        </label>
+    </div>
+
+    <div>
+        <label>
+            Can Size
+            <input type="text" name="can_size">
+        </label>
+    </div>
+
+    <div> 
+        <label>
+            Needs Pick Up
+            <input type="text" name="needs_pickup">
+        </label>
+    </div> 
+        <input type="submit" value="Register">
+    </div>
+
+
+
+</form>
+</body>
+</html>
