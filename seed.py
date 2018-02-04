@@ -43,6 +43,50 @@ def load_users():
     db.session.commit()
 
 
+    res1 = Resident(user_id=user1.user_id,
+                    fname='bob',
+                    lname='bobbertson',
+                    address='462 Powell St, San Francisco, CA 94102',
+                    can_size='standard',
+                    needs_pickup=False)
+
+    res2 = Resident(user_id=user2.user_id,
+                    fname='sally',
+                    lname='sallerson',
+                    address='450 Sutter St, San Francisco, CA 94102',
+                    can_size='standard',
+                    needs_pickup=False)
+
+    res3 = Resident(user_id=user3.user_id,
+                    fname='gramps',
+                    lname='grandparent',
+                    address='398 Market St, San Francisco, CA 94111',
+                    can_size='standard',
+                    needs_pickup=False)
+
+    res4 = Resident(user_id=user4.user_id,
+                    fname='gran',
+                    lname='grandparent',
+                    address='44 Montgomery St, San Francisco, CA 94104',
+                    can_size='standard',
+                    needs_pickup=False)
+
+    res5 = Resident(user_id=user5.user_id,
+                    fname='five',
+                    lname='fiverson',
+                    address='789 Mission St, San Francisco, CA 94103',
+                    can_size='standard',
+                    needs_pickup=False)
+
+    db.session.add(res1)
+    db.session.add(res2)
+    db.session.add(res3)
+    db.session.add(res4)
+    db.session.add(res5)
+
+    db.session.commit()
+
+
 if __name__ == '__main__':
 
   #db.create_all() inside connect_to_db()
