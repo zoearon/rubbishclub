@@ -45,12 +45,32 @@ def register_process():
 
 
 @app.route('/login', methods=['GET'])
+def view_login():
+    """ show the login form """
+
+    return render_template("login.html")
+
+
+@app.route('/login', methods=['POST'])
 def login():
     """ log the user in """
 
     # get the user name from the post form
     email = request.form.get("email")
     password = request.form.get("password")
+
+    active_user = db.session.query(User).filter(User.email == email,
+                                                User.password == password).first()
+
+    if active_user:
+        flash("Login Successful")
+        session['user'] = active_user.user_id
+        if active_user.resident_or_collector == "resident":
+            return redirect('/profile')
+        elif active_user.resident_or_collector == "collector":
+            return redirect('/collector')
+        flash("Login Failed")
+        return redirect('/login')
 
 
 @app.route('/profile')

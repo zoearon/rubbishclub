@@ -9,8 +9,18 @@
 
 <body>
   
-  <hr>
-
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+          <ul class="nav navbar-nav navbar-right">
+            {% if 'user' in session %}
+            <li><a href="/user"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            {% else %}
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            {% endif %}
+          </ul>
+    </div>
+  </nav>
   <ul>
     {% for message in get_flashed_messages() %}
     <li>{{message}}</li>
@@ -19,7 +29,7 @@
 
   {% block content %} put your content here {% endblock %}
 
-  <footer>{{session.get("user","")}}<a href="/logout">LOG OUT</a></footer>
+
 
 </body>
 </html>
