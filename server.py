@@ -93,6 +93,11 @@ def logout():
 
     return render_template('homepage.html')
 
+@app.route('/collector')
+def view_collector_profile():
+    """ Garbage Collector profile page """
+
+    return render_template('collector.html')
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
