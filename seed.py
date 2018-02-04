@@ -7,9 +7,9 @@ def load_users():
     """ Loads sample users into the db """
 
     #Delete to prevent duplicates:
-    User.query.delete()
     Resident.query.delete()
     GarbageCollector.query.delete()
+    User.query.delete()
 
     #these will be the residents:
     # (passwords not secure because they're just examples)
@@ -34,11 +34,16 @@ def load_users():
                  password='pass',
                  resident_or_collector='resident')
 
+    user6 = User(email='thetrashman82@rubbish.com',
+                 password='trash',
+                 resident_or_collector='collector')
+
     db.session.add(user1)
     db.session.add(user2)
     db.session.add(user3)
     db.session.add(user4)
     db.session.add(user5)
+    db.session.add(user6)
 
     db.session.commit()
 
@@ -83,6 +88,14 @@ def load_users():
     db.session.add(res3)
     db.session.add(res4)
     db.session.add(res5)
+
+    db.session.commit()
+
+    collector1 = GarbageCollector(user_id=user6.user_id,
+                                  fname='G',
+                                  lname='Arbage')
+
+    db.session.add(collector1)
 
     db.session.commit()
 
