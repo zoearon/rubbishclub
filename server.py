@@ -17,12 +17,33 @@ app.jinja_env.undefined = StrictUndefined
 
 tom_tom_key=os.environ["TOM_TOM_KEY"]
 
+
 @app.route('/')
 def index():
     """Homepage."""
 
 
     return render_template("homepage.html")
+
+@app.route('/register')
+def register():
+    """ register new residents and collectors """
+
+    return render_template("register.html")
+
+
+@app.route('/login')
+def login():
+    """ login for residents and collectors """
+
+    return render_template("login.html")
+
+
+@app.route('/profile')
+def view_profile():
+    """ Resident profile page """
+
+    return render_template("res_profile.html")
 
 
 if __name__ == "__main__":
