@@ -6,7 +6,6 @@ from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, User, Resident, GarbageCollector
 
 import os
-from model import db
 
 #from helper_funcs import find_labels, find_datasets
 
@@ -26,7 +25,7 @@ def index():
 
     return render_template("homepage.html")
 
-@app.route('/register')
+@app.route('/register', methods=['POST'])
 def register():
     """ register new residents and collectors """
 
@@ -43,39 +42,13 @@ def register_process():
     address = request.form["address"]
     can_size = request.form["can_size"]
     needs_pickup = request.form["needs_pickup"]
-
-    #UPDATE DB
-
-    return redirect("/")
  
-
-@app.route('/login', methods=['GET'])
-def login():
-    """ login for residents and collectors """
-
-    return render_template("login.html")
-
-
-@app.route('/login', methods=['POST'])
-def check_user():
     """ log the user in """
 
-    # get the email from the post form
+    # get the user name from the post form
     email = request.form.get("email")
     password = request.form.get("password")
 
-    active_user = db.session.query(User).filter(User.email == email,
-                                                User.password == password).first()
-
-    if active_user:
-        flash("Login Successful")
-        session['user'] = active_user.user_id
-        if active_user.resident_or_collector == "resident":
-            return redirect('/profile')
-        elif ctive_user.resident_or_collector == "collector":
-            return redirect('/collector')
-    flash("Login Failed")
-    return redirect('/login')
 
 @app.route('/profile')
 def view_profile():
@@ -83,11 +56,6 @@ def view_profile():
 
     return render_template("res_profile.html")
 
-@app.route('/collector')
-def directions():
-    """ Collector page """
-
-    return render_template("collector.html")
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
