@@ -5,9 +5,6 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 #from model import connect_to_db, db, User, Favorite, Dog, Shelter, Breed
 
-import ipdb
-import json
-import requests
 import os
 
 #from helper_funcs import find_labels, find_datasets
@@ -20,6 +17,44 @@ app.jinja_env.undefined = StrictUndefined
 
 tom_tom_key=os.environ["TOM_TOM_KEY"]
 
+
+@app.route('/')
+def index():
+    """Homepage."""
+
+
+    return render_template("homepage.html")
+
+@app.route('/register')
+def register():
+    """ register new residents and collectors """
+
+    return render_template("register.html")
+
+
+@app.route('/login', methods=['GET'])
+def login():
+    """ login for residents and collectors """
+
+    return render_template("login.html")
+
+
+@app.route('/login', methods=['POST'])
+def check_user():
+    """ log the user in """
+
+    # get the user name from the post form
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+
+@app.route('/profile')
+def view_profile():
+    """ Resident profile page """
+
+    return render_template("res_profile.html")
+
+
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
     # that we invoke the DebugToolbarExtension
@@ -27,9 +62,9 @@ if __name__ == "__main__":
     app.jinja_env.auto_reload = True
     app.config["TEMPLATES_AUTO_RELOAD"] = True
 
-    connect_to_db(app)
+  #  connect_to_db(app)
 
     # Use the DebugToolbar
     DebugToolbarExtension(app)
 
-    app.run(host="0.0.0.0")
+    app.run(host="127.0.0.1")
