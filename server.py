@@ -59,13 +59,13 @@ def login():
     email = request.form.get("email")
     password = request.form.get("password")
 
-<<<<<<< HEAD
+
 @app.route('/login-success')
 def login_process():
     """ Takes resident to profile page  """
 
     return render_template('res_profile.html')
-=======
+
     active_user = db.session.query(User).filter(User.email == email,
                                                 User.password == password).first()
 
@@ -79,7 +79,7 @@ def login_process():
         flash("Login Failed")
         return redirect('/login')
 
->>>>>>> b917d749b5f7015fcb30ab7ab294201194a228b7
+
 
 @app.route('/profile')
 def view_profile():
@@ -97,7 +97,8 @@ def logout():
 def view_collector_profile():
     """ Garbage Collector profile page """
 
-    return render_template('collector.html')
+    return render_template('collector.html',
+                            tom_tom_key=tom_tom_key)
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
