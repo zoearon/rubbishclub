@@ -42,7 +42,10 @@ def register_process():
     address = request.form["address"]
     can_size = request.form["can_size"]
     needs_pickup = request.form["needs_pickup"]
- 
+
+
+@app.route('/login', methods=['GET'])
+def login():
     """ log the user in """
 
     # get the user name from the post form
