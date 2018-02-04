@@ -6,6 +6,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 #from model import connect_to_db, db, User, Favorite, Dog, Shelter, Breed
 
 import os
+from model import db
 
 #from helper_funcs import find_labels, find_datasets
 
@@ -59,10 +60,22 @@ def login():
 def check_user():
     """ log the user in """
 
-    # get the user name from the post form
+    # get the email from the post form
     email = request.form.get("email")
     password = request.form.get("password")
 
+    active_user = db.session.query(User).filter(User.email == email,
+                                                User.password == password).first()
+
+    if active_user:
+        flash("Login Successful")
+        session['user'] = active_user.user_id
+        if active_user.resident_or_collector == "resident":
+            return redirect('/profile')
+        elif ctive_user.resident_or_collector == "collector":
+            return redirect('/collector')
+    flash("Login Failed")
+    return redirect('/login')
 
 @app.route('/profile')
 def view_profile():
@@ -70,6 +83,11 @@ def view_profile():
 
     return render_template("res_profile.html")
 
+@app.route('/collector')
+def directions():
+    """ Collector page """
+
+    return render_template("collector.html")
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
