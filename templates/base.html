@@ -1,4 +1,4 @@
-<!doctype html>
+w1<!doctype html>
 <html>
 <head>
   <title>{% block title %} Rubbish {% endblock %}</title>
@@ -19,7 +19,12 @@
 
   {% block content %} put your content here {% endblock %}
 
-  <footer>{{session.get("user","")}}<a href="/logout">LOG OUT</a></footer>
+  <footer>
+    {{session.get("user","")}}<a href="/logout">LOG OUT</a>
+
+    {session.get("user", "")}<a href="/login">LOG IN</a>
+
+  </footer>
 
 </body>
 </html>

@@ -52,12 +52,23 @@ def login():
     email = request.form.get("email")
     password = request.form.get("password")
 
+@app.route('/login-success')
+def login_process():
+    """ Takes resident to profile page  """
+
+    return render_template('res_profile.html')
 
 @app.route('/profile')
 def view_profile():
     """ Resident profile page """
 
     return render_template("res_profile.html")
+
+@app.route('/logout')
+def logout():
+    """ log out user """
+
+    return render_template('homepage.html')
 
 
 if __name__ == "__main__":
