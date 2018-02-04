@@ -1,0 +1,9 @@
+Flask==0.12.2
+Flask-DebugToolbar==0.10.1
+Flask-SQLAlchemy==2.2
+
+Jinja2==2.9.6
+pickleshare==0.7.4
+
+SQLAlchemy==1.1.7
+Werkzeug==0.12.2
