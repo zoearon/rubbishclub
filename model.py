@@ -66,6 +66,33 @@ class GarbageCollector(db.Model):
 
 
 
+def connect_to_db(app, db_uri='postgresql:///rubbishclub'):
+    """Connects databse to Flask app"""
+
+    # rubbishclub is the name of the db
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    #prints SQL translation:
+    app.config['SQLALCHEMY_ECHO'] = False
+    #stops the yelling
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    #flask app
+    db.app = app
+    db.init_app(app)
+
+    db.create_all()
+
+
+if __name__ == '__main__':
+
+    from server import app
+    connect_to_db(app)
+
+
+    print "CONNECTED TO DB!"
+
+
+
 
 
 
