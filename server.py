@@ -3,7 +3,7 @@ from jinja2 import StrictUndefined
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 
-#from model import connect_to_db, db, User, Favorite, Dog, Shelter, Breed
+from model import connect_to_db, db, User, Resident, GarbageCollector
 
 import os
 
