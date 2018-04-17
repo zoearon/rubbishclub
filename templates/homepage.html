@@ -1,0 +1,11 @@
+
+{% extends 'base.html' %}
+
+    {% block title %}Rubbish Club{% endblock %}
+{% block content %}
+	<form action="/register" method="POST">	
+  <input type="radio" name="gender" value="male" checked> Resident<br>
+  <input type="radio" name="gender" value="female">Garbage Collector<br>
+  <input type="submit">
+</form>
+{% endblock %}

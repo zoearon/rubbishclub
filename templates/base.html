@@ -1,0 +1,44 @@
+w1<!doctype html>
+<html>
+<head>
+  <title>{% block title %} Rubbish {% endblock %}</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+          <ul class="nav navbar-nav navbar-right">
+            {% if 'user' in session %}
+            <li><a href="/user"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            {% else %}
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            {% endif %}
+          </ul>
+    </div>
+  </nav>
+  <ul>
+    {% for message in get_flashed_messages() %}
+    <li>{{message}}</li>
+    {% endfor %}
+  </ul>
+
+  {% block content %} put your content here {% endblock %}
+
+<<<<<<< HEAD
+  <footer>
+    {{session.get("user","")}}<a href="/logout">LOG OUT</a>
+
+    {session.get("user", "")}<a href="/login">LOG IN</a>
+
+  </footer>
+=======
+
+>>>>>>> b917d749b5f7015fcb30ab7ab294201194a228b7
+
+</body>
+</html>
